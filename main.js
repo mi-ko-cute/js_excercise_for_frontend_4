@@ -24,35 +24,35 @@
     }
   });
 
-    // 「todos」の中身を一覧表示する
-    //    - ul要素にli要素を追加して、li要素内にtodoタスクの内容を表示する
-    //    - li要素内に削除ボタンを配置して、削除ボタンをクリックしたら対応するタスクを削除する
-    function showTodos() {
-      while(ulElement.firstChild) {
-        ulElement.removeChild(ulElement.firstChild);
-      }
-
-      todos.forEach((todo, index) => {
-        const todoItem = document.createElement('li');
-        const taskNumber = index + 1;
-
-        todoItem.textContent = `${taskNumber} : ${todo}`;
-        ulElement.appendChild(todoItem);
-
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = '削除';
-        deleteButton.addEventListener('click', (event) => {
-          deleteTodo(index);
-        });
-        todoItem.appendChild(deleteButton);
-      });
+  // 「todos」の中身を一覧表示する
+  //    - ul要素にli要素を追加して、li要素内にtodoタスクの内容を表示する
+  //    - li要素内に削除ボタンを配置して、削除ボタンをクリックしたら対応するタスクを削除する
+  function showTodos() {
+    while (ulElement.firstChild) {
+      ulElement.removeChild(ulElement.firstChild);
     }
+
+    todos.forEach((todo, index) => {
+      const todoItem = document.createElement('li');
+      const taskNumber = index + 1;
+
+      todoItem.textContent = `${taskNumber} : ${todo}`;
+      ulElement.appendChild(todoItem);
+
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = '削除';
+      deleteButton.addEventListener('click', (event) => {
+        deleteTodo(index);
+      });
+      todoItem.appendChild(deleteButton);
+    });
+  }
   // Todo情報を表すli要素(showTodo関数で作成される要素)の中にある削除ボタンをクリックしたら実行される。
   //   - todosから対応するtodo情報を削除する
   //   - 引数はindexを受け取る(インデックス番号)
   //   - 削除後はshowTodosを実行して、Todoリストを整理する
-    function deleteTodo(index) {
-      todos.splice(index, 1);
-      showTodos();
-    }
+  function deleteTodo(index) {
+    todos.splice(index, 1);
+    showTodos();
+  }
 })();
